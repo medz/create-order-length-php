@@ -16,12 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Medz\\Component\\CreateOrderLength\\": "src/"
+            "Medz\\Component\\": "src/"
         }
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"copy('.zank.yaml.example', '.zank.yaml');\""
-        ]
     }
 }
