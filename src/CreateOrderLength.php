@@ -47,4 +47,21 @@ class CreateOrderLength
     {
         $THIS->keys = $keys;
     }
+
+    public function start($string = '')
+    {
+        foreach ($this->keys as $key) {
+            $this->fn($string.$key);
+        }
+    }
+
+    protected function fn($string)
+    {
+        call_user_func_array($this->callable, array($string));
+        if (isset($string[$this->length])) {
+            return ;
+        }
+
+        $this->start($string);
+    }
 }
