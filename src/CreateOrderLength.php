@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Component\CreateOrderLength;
+namespace Medz\Component;
 
 use callable;
 
@@ -9,12 +9,12 @@ class CreateOrderLength
     /**
      * 默认keys.
      */
-    const DEFAULT_KEYS = [
+    const DEFAULT_KEYS = array(
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
         'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
         'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
         'x', 'c', 'v', 'b', 'n', 'm',
-    ];
+    );
 
     /**
      * 需要循环生成的keys.
