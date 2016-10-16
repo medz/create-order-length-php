@@ -1,0 +1,27 @@
+{
+    "name": "medz/create-order-length-php",
+    "type": "libary",
+    "homepage": "http://medz.cn",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Seven Du",
+            "email": "lovevipdsw@outlook.com",
+            "homepage": "http://medz.cn",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Medz\\Component\\CreateOrderLength\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.zank.yaml.example', '.zank.yaml');\""
+        ]
+    }
+}
