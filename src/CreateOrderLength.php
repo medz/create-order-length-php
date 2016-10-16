@@ -4,18 +4,20 @@ namespace Medz\Component\CreateOrderLength;
 
 class CreateOrderLength
 {
-    protected static $keys = [
+    const DEFAULT_KEYS = [
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
         'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
         'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
         'x', 'c', 'v', 'b', 'n', 'm',
     ];
 
+    protected $keys = [];
+
     protected $length = 0;
 
     protected $callable;
 
-    public function __construct($length = 1, callable $callable = null, array $keys = self::$keys)
+    public function __construct($length = 1, callable $callable = null, array $keys = self::DEFAULT_KEYS)
     {
         $this->setLength($length);
 
@@ -43,6 +45,6 @@ class CreateOrderLength
 
     public function setKeys(array $keys)
     {
-        self::$keys = $keys;
+        $THIS->keys = $keys;
     }
 }
