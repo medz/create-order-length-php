@@ -4,6 +4,9 @@ namespace Medz\Component;
 
 use callable;
 
+/**
+ * 用于生成字典本.
+ */
 class CreateOrderLength
 {
     /**
