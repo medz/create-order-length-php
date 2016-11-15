@@ -41,9 +41,9 @@ class CreateOrderLength
     /**
      * 构造方法，用于实例化的时候生成默认数据.
      *
-     * @param int       $length   生成的长度，default length 1.
+     * @param int      $length   生成的长度，default length 1.
      * @param callable $callable 回调方法
-     * @param array     $keys     用于生产的key
+     * @param array    $keys     用于生产的key
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
