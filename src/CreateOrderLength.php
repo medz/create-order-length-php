@@ -12,12 +12,12 @@ class CreateOrderLength
     /**
      * 默认keys.
      */
-    const DEFAULT_KEYS = array(
+    const DEFAULT_KEYS = [
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
         'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
         'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
         'x', 'c', 'v', 'b', 'n', 'm',
-    );
+    ];
 
     /**
      * 需要循环生成的keys.
@@ -29,7 +29,7 @@ class CreateOrderLength
     /**
      * 需要生成的长度.
      *
-     * @var integer
+     * @var int
      */
     protected $length = 0;
 
@@ -43,10 +43,10 @@ class CreateOrderLength
     /**
      * 构造方法，用于实例化的时候生成默认数据.
      *
-     * @param int $length 生成的长度，default length 1.
+     * @param int       $length   生成的长度，default length 1.
      * @param \callable $callable 回调方法
-     * @param array $keys 用于生产的key
-     * 
+     * @param array     $keys     用于生产的key
+     *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
@@ -65,6 +65,7 @@ class CreateOrderLength
      * 设置生成长度方法.
      *
      * @param int $length
+     *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
@@ -84,6 +85,7 @@ class CreateOrderLength
      * 设置回调函数方法.
      *
      * @param \callable $callable 回调函数
+     *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
@@ -98,6 +100,7 @@ class CreateOrderLength
      * 设置用于生成的key值.
      *
      * @param array $keys
+     *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
@@ -133,10 +136,10 @@ class CreateOrderLength
      */
     protected function fn($string)
     {
-        call_user_func_array($this->callable, array($string));
+        call_user_func_array($this->callable, [$string]);
         if (isset($string[$this->length])) {
             // 生成到了指定长度，终止继续递归，开始递归下一条.
-            return null;
+            return;
         }
 
         $this->start($string);
