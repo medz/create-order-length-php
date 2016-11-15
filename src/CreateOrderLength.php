@@ -2,7 +2,7 @@
 
 namespace Medz\Component;
 
-use callable;
+// use callable;
 
 /**
  * 用于生成字典本.
@@ -103,7 +103,7 @@ class CreateOrderLength
      */
     public function setKeys(array $keys)
     {
-        $THIS->keys = $keys;
+        $this->keys = $keys;
 
         return $this;
     }
