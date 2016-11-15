@@ -34,7 +34,7 @@ $cls->setCallable(function ($str) use ($arr) {
 
 // 设置用于生成字符串的字符组合
 // 默认值是a-z0-9
-// $this->setKeys(array(...))
+// $cls->setKeys(array(...))
 
 // 开始生成
 // 支持设置前置字符串，前置字符串将会被计算到长度当中。
