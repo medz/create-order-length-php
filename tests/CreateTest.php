@@ -8,7 +8,7 @@ use PHPUnit_Framework_TestCase;
 class CreateTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * 测试类是否存在
+     * 测试类是否存在.
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -19,7 +19,7 @@ class CreateTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * 测试构造的长度抛出异常信息
+     * 测试构造的长度抛出异常信息.
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -36,7 +36,7 @@ class CreateTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * 测试生成的数据
+     * 测试生成的数据.
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
