@@ -8,21 +8,11 @@ namespace Medz\Component;
 class CreateOrderLength
 {
     /**
-     * 默认keys.
-     */
-    const DEFAULT_KEYS = array(
-        '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
-        'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
-        'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
-        'x', 'c', 'v', 'b', 'n', 'm',
-    );
-
-    /**
      * 需要循环生成的keys.
      *
      * @var array
      */
-    protected $keys = [];
+    protected $keys = array();
 
     /**
      * 需要生成的长度.
@@ -48,7 +38,16 @@ class CreateOrderLength
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
-    public function __construct($length = 1, callable $callable = null, array $keys = self::DEFAULT_KEYS)
+    public function __construct(
+        $length = 1,
+        callable $callable = null,
+        array $keys = array(
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
+            'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
+            'x', 'c', 'v', 'b', 'n', 'm',
+        )
+    )
     {
         $this->setLength($length);
 
@@ -134,7 +133,7 @@ class CreateOrderLength
      */
     protected function fn($string)
     {
-        call_user_func_array($this->callable, [$string]);
+        call_user_func_array($this->callable, array($string));
         if (isset($string[$this->length])) {
             // 生成到了指定长度，终止继续递归，开始递归下一条.
             return;

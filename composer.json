@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Medz\\Component\\CreateOrderLength\\Test\\": "test/"
+            "Medz\\Component\\CreateOrderLength\\Test\\": "tests/"
         }
     }
 }

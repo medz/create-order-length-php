@@ -9,6 +9,6 @@ class CreateTest extends PHPUnit_Framework_TestCase
 {
     public function testClssHas()
     {
-        $this->assertTrue(class_exists('CreateOrderLength'));
+        $this->assertTrue(class_exists('Medz\\Component\\CreateOrderLength'));
     }
 }
