@@ -19,7 +19,7 @@ if (file_exists($baseAutoload) && is_file($baseAutoload)) {
 } elseif (function_exists('spl_autoload_register')) {
     // 需要注册自动加载的类列表
     $classFiles = array(
-        'Medz\\Component\\CreateOrderLength' => '/src/CreateOrderLength.php',
+        'Medz\\Component\\CreateOrderLength'                   => '/src/CreateOrderLength.php',
         'Medz\\Component\\CreateOrderLength\\Test\\CreateTest' => '/test/CreateTest.php',
     );
 
