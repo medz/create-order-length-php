@@ -2,6 +2,8 @@
 
 namespace Medz\Component;
 
+use Closure;
+
 /**
  * 用于生成字典本.
  */
@@ -24,7 +26,7 @@ class CreateOrderLength
     /**
      * 每一次生成的回调方法.
      *
-     * @var callable
+     * @var Closure
      */
     protected $callable;
 
@@ -32,7 +34,7 @@ class CreateOrderLength
      * 构造方法，用于实例化的时候生成默认数据.
      *
      * @param int      $length   生成的长度，default length 1.
-     * @param callable $callable 回调方法
+     * @param Closure $callable 回调方法
      * @param array    $keys     用于生产的key
      *
      * @author Seven Du <lovevipdsw@outlook.com>
@@ -40,7 +42,7 @@ class CreateOrderLength
      */
     public function __construct(
         $length = 1,
-        callable $callable = null,
+        Closure $callable = null,
         array $keys = array(
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
@@ -80,12 +82,12 @@ class CreateOrderLength
     /**
      * 设置回调函数方法.
      *
-     * @param \callable $callable 回调函数
+     * @param Closure $callable 回调函数
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
-    public function setCallable(callable $callable)
+    public function setCallable(Closure $callable)
     {
         $this->callable = $callable;
 
@@ -133,7 +135,7 @@ class CreateOrderLength
     protected function fn($string)
     {
         call_user_func_array($this->callable, array($string));
-        if (isset($string[$this->length])) {
+        if (isset($string[$this->length - 1])) {
             // 生成到了指定长度，终止继续递归，开始递归下一条.
             return;
         }
