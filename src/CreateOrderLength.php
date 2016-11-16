@@ -24,9 +24,9 @@ class CreateOrderLength
     protected $length = 0;
 
     /**
-     * 是否生成固定长度
+     * 是否生成固定长度.
      *
-     * @var boolean
+     * @var bool
      */
     protected $isStaticLength = false;
 
@@ -73,7 +73,7 @@ class CreateOrderLength
     /**
      * Set crater length.
      *
-     * @param int $length The length that needs to be generated
+     * @param int  $length         The length that needs to be generated
      * @param bool $isStaticLength [false] Generates only the specified length
      *
      * @author Seven Du <lovevipdsw@outlook.com>
@@ -152,7 +152,6 @@ class CreateOrderLength
         }
 
         if (isset($string[$this->length - 1])) {
-
             if ($this->isStaticLength === true) {
                 call_user_func_array($this->callable, array($string));
             }
