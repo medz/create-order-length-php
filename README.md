@@ -22,9 +22,11 @@ use Medz\Component\CreateOrderLength;
 $arr = array();
 
 // 构造方法中支持快速设置需要的各个参数。
+// $cls = new CreateOrderLength([int $length = 1 | array [int $lrngth = 1, bool $isStaticLength = false]], array $keys = [...]);
 $cls = new CreateOrderLength();
 
 // 设置生成的最大长度
+// $cls->setLength(int $length, [bool $isStaticLength = false])
 $cls->setLength(3);
 
 // 设置回调方法，传入匿名函数
