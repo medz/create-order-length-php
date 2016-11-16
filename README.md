@@ -28,7 +28,7 @@ $cls = new CreateOrderLength();
 $cls->setLength(3);
 
 // 设置回调方法，传入匿名函数
-$cls->setCallable(function ($str) use ($arr) {
+$cls->setCallable(function ($str) use (&$arr) {
   array_push($arr, $str);
 });
 
