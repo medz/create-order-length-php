@@ -56,4 +56,19 @@ class CreateTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($keys, $arr);
         $this->assertCount($length, $arr);
     }
+
+    public function testCreateStaticLength()
+    {
+        $arr = array();
+        $length = 2;
+        $keys = array('a');
+        $fn = function ($str) use (&$arr) {
+            array_push($arr, $str);
+        };
+
+        $cls = new CreateOrderLength(array($length, true), $fn, $keys);
+        $cls->start();
+
+        $this->assertEquals('aa', $arr[0]);
+    }
 }
