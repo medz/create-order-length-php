@@ -24,6 +24,13 @@ class CreateOrderLength
     protected $length = 0;
 
     /**
+     * 是否生成固定长度
+     *
+     * @var boolean
+     */
+    protected $isStaticLength = false;
+
+    /**
      * 每一次生成的回调方法.
      *
      * @var Closure
@@ -33,9 +40,9 @@ class CreateOrderLength
     /**
      * 构造方法，用于实例化的时候生成默认数据.
      *
-     * @param int     $length   生成的长度，default length 1.
-     * @param Closure $callable 回调方法
-     * @param array   $keys     用于生产的key
+     * @param int     $length   The length that needs to be generated
+     * @param Closure $callable call function
+     * @param array   $keys     User-generated characters
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -51,6 +58,10 @@ class CreateOrderLength
         )
     ) {
         $this->setLength($length);
+        if (is_array($length)) {
+            list($length, $isStaticLength) = $length;
+            $this->setLength($length, $isStaticLength);
+        }
 
         if ($callable !== null) {
             $this->setCallable($callable);
@@ -60,14 +71,15 @@ class CreateOrderLength
     }
 
     /**
-     * 设置生成长度方法.
+     * Set crater length.
      *
-     * @param int $length
+     * @param int $length The length that needs to be generated
+     * @param bool $isStaticLength [false] Generates only the specified length
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
-    public function setLength($length)
+    public function setLength($length, $isStaticLength = false)
     {
         $length = intval($length);
         if ($length < 1) {
@@ -75,14 +87,15 @@ class CreateOrderLength
         }
 
         $this->length = $length;
+        $this->isStaticLength = (bool) $isStaticLength;
 
         return $this;
     }
 
     /**
-     * 设置回调函数方法.
+     * Set callable closure function.
      *
-     * @param Closure $callable 回调函数
+     * @param Closure $callable call function
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -95,9 +108,9 @@ class CreateOrderLength
     }
 
     /**
-     * 设置用于生成的key值.
+     * Set create base keys.
      *
-     * @param array $keys
+     * @param array $keys User-generated characters
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -110,9 +123,9 @@ class CreateOrderLength
     }
 
     /**
-     * 开始生成|fn递归函数.
+     * Start functuon. [Recursive, call fn function].
      *
-     * @param string $string 生成长度前默认字符串
+     * @param string $string Prefix the string
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
@@ -125,18 +138,26 @@ class CreateOrderLength
     }
 
     /**
-     * 生成函数循环执行方法.
+     *  Call function, run callable.
      *
-     * @param string $string 生成的字符串（拼接上了之前的字符串）
+     * @param string $string The resulting string (concatenated with the previous string)
      *
      * @author Seven Du <lovevipdsw@outlook.com>
      * @homepage http://medz.cn
      */
     protected function fn($string)
     {
-        call_user_func_array($this->callable, array($string));
+        if ($this->isStaticLength === false) {
+            call_user_func_array($this->callable, array($string));
+        }
+
         if (isset($string[$this->length - 1])) {
-            // 生成到了指定长度，终止继续递归，开始递归下一条.
+
+            if ($this->isStaticLength === true) {
+                call_user_func_array($this->callable, array($string));
+            }
+
+            // stop.
             return;
         }
 
